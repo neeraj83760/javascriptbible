@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Throtlling in Javascript : it's mainly used for performance optimization or the
+    rate limiting the function call or function execution
+    -->
+   <!-- Example : suppose we have the button in our webpage ..and onclick on 
+       button we are making the function call suppose onClick(); method which is a 
+       expensive function ... which fetches some data from the API and returns
+       
+       suppose if the user is clicking the button again and again and again and again
+       is it a good way to make a API call on every click? no rigcdht? 
+
+       So if we have the limit the rate we can limit it by using throttling:
+       
+       Means we can use throttling on the onClick() method so that if even someone click
+       on button multiple times we can still limit the rate ..like after how many clicks
+       the API call will be made .. u can limit it to 500ms, 300ms,100ms etc 
+       
+       
+-->
+<script>
+
+    const expensive = () => {
+
+        console.log('Expensive'); 
+    }
+
+// so suppose the above function call is being made on the window resize event like :
+// window add eventlistener("resize", expensive) .. so every resizing the window will call
+// thousands of reseizing events.......so how we can make a better expensive function
+
+// const betterExpensive = throttle(expensive , limit) we need to write a throttle function which will give
+// u a better expensive function......... so instead of calling eventlistener("resize", expensive) we
+// will call     
+
+// lets write our own implimentation of throttle function 
+
+const throttle = (func, limit) =>{
+    let flag = true; // we made a closure over here in this line to intialize our flag again and again
+    // if we kept the flag inside the below mentioned function ..whenver this function is run again
+    // the flag variable will be reintialize again and again 
+    return function(){
+        // let context = this;
+        // args = arguments;  
+        if(flag)
+        func();
+        // func.apply(context, args)
+        flag= false;  
+        setTimeout(() => {
+            flag = true; // only make it true when the limit is crossed 
+        },limit);
+    }
+}
+
+//  The real code which u can try which is written by Akshay sir is mentioned below: 
+
+// const loggerFunc = () => {
+//   console.count("Throttled Function");
+// }
+
+// const throttle = (fn, limit) => {
+//   let flag = true;
+//   return function(){
+//     let context = this;
+//     let args = arguments;
+//     if(flag){
+//       fn.apply(context, args);
+//       flag = false;
+//       setTimeout(() => {
+//         flag=true;
+//       }, limit);
+//     }
+//   }
+// }
+
+// const betterLoggerFunction = throttle(loggerFunc, 1000);
+
+// window.addEventListener("resize",betterLoggerFunction);
+
+// // This is the normal Function without Throttling
+// //Check the console for the difference between the calls of Normal Function and the Throttled Function 
+// const normalFunc = () => {
+//   console.count("Normal Function");
+// }
+
+// window.addEventListener("resize",normalFunc);
+
+
+</script>
+</body>
+</html>

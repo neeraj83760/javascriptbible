@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // VVIMP key point :  the global execution context is the "anynonoumus function" which
+        // always first pushed into the call stack which we check in the debugger tool
+        // arrow functions behaves just like any other variable 
+
+
+        getname();
+        console.log(x);
+        console.log(getname);
+
+        // this will not throw an error with the above code but below mentioned arrow function
+        // will 
+
+        function getName(){  // this will kept as a complete fucntion in the memory while
+            // you check in the debugger tool but arrow function will kept as a variable
+            // and undefined will be assigned to it ....before the debbugging and execution
+            // of the program starts 
+            console.log("namaste javascript"); 
+
+
+        }
+
+        var getName = () =>{
+
+            console.log("namaste javascript"); 
+        }
+
+        var getName = function(){
+
+            console.log("namaste javascript"); // this will also behaves just like a variable 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    div{
+
+        min-width: 100px;
+        min-height: 100px;
+        padding: 30px;
+        border: 1px solid black;   
+    }
+</style>
+<body>
+
+    <div id="parent">
+        // onclick grandparent event
+           <div id="child">
+            // onclick parent 
+           <div id ="grandchild">
+              // onclickchild() 
+           </div>
+           </div>
+       </div> 
+    <script>
+        // Event Bubbling and capturing in javacript 
+// these are the two ways of event propogation in the DOM tree 
+
+// Suppose we have nested HTML elements
+
+// so suppose if any event accours on the child propogate to its parent as well ..ex: suppose
+// child div has onclock 
+
+// event bubbling means : event moves the component towards upwards andevent capturing means 
+// event moves downwards, in event caputring(event trickling) when u click on the child div all the three event w
+//will be triggred but when u click on child event 
+// handler the grandparent click handler will be called first then the child and then the grand 
+//child        
+
+// addEventListener('Click', ()=>{
+
+//       // this method is called when the event happened   
+// }, useCapture// it's a boolean agrument either true or false.. so on the basis of true or fasle)
+
+// the browser decides what to do either do a bubble or capture 
+// it the userCapture = false the event will bubble up but if's true it will trikkles(captured) down
+
+// in w3c model the cycle will anyway continue it will trikkkle down and bubble up andso on so forth
+
+
+// by default the third argument is false that's why when you click on the innermost div on the
+// browser it will bubbled up
+
+// if u click on the child div then only child and it's upper parent will bubbled up , nothing 
+// will happened on grandchild 
+document.querySelector("#parent")
+.addEventListener('click', ()=>{
+
+    console.log("Grandparent clicked"); 
+},false);
+
+document.querySelector("#child")
+.addEventListener('click', ()=>{
+
+    console.log("parent clicked"); 
+},false);
+
+document.querySelector("#grandchild")
+.addEventListener('click', (e)=>{
+
+    console.log("child");
+    e.stopPropagation();  
+}, false);
+
+// if we set the boolean value to true will change the direction of event bubbling called trickling
+// ****************Event bubbling and trickling has performance issues there are costly ******
+// we need sometimes stop the propogation 
+
+// suppose u put the boolean value to false for parent Div and rest of two will remain true, what will happen?
+// if u click innermost div which is grandchild then:
+//a) trickling will happen and granparent will print.
+//b)  as parent is false so it will not print 
+// c) grandchild will print .........then when all the printing ends then event again bubbles up an parent will print 
+
+
+// ***************** How to stop the propogation up the herracy and down the herracy 
+//                   because both are expensive things 
+
+// solution is :  put "e" in the callback function argument in the addEventListner method and call
+// e.stopPropogation(); method 
+//*************
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
+
+
+

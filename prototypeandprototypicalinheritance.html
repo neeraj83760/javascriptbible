@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Prototype simply means parent  -->
+    <!--  Classes in javascript are just a syntatical sugar or object  -->
+    <!--  Calssical inheritance in other programming languages are totally diffrent
+          as compare to prototypcal inheritance in the javascript 
+    -->
+
+    let a = 10;
+    let b = 7; 
+
+    <!-- the above two varialbes are diffrent but dervied from same parent Object which is Object 
+    itself you can check the same in the broswer console 
+    -->
+     
+    <!-- let arr = [4,6,7,9]  -->
+
+    <!-- Whenever you create a javascript object javascript engine automatically 
+        without even letting you know attaches your object with some hidden 
+        properties and functions ....and these are the hidden properties
+        and functions which you can access it by just doing arr.push, arr.length etc 
+
+        even bjecta function in javascript attaches with some hidden properties and methods
+        by using protypical inheritance 
+
+        keynote : javascript engine attaches an object with your object which having
+        hidden properties and methods 
+
+        if you want to access that hidden object which jS engine attaches to your object
+        you can write :  arr._proto_ 
+
+        it is same as Array.prototype so,  arr._proto_ === Array.prototype both will
+        give you the same result 
+
+        Even _proto_ is an object and each an every object in the javascript 
+        has a prototype so arr._proto_ has its own prototype ...means it also has a protptype
+
+        arr._proto_._proto   = this is actually a Object.prototype 
+
+        This means :  Object.protype is also an object so 
+
+        arr._proto_.proto_._proto_ = Null .............
+
+        it;s a sort of a chain 
+
+        arr._proto_ is a Array.prototype and arr._proto_._proto_ is a Object.protoype and 
+        
+        arr._proto_._proto_._proto_ = Null ...... this is prototype chain 
+    -->
+    <script>
+    //    let arr = ['Neeraj', 'Ghildiyal'];
+
+       let obj = {name:"Johny",
+                  Age: 31,
+                  city: "Delhi"   
+    }
+    let obj1 = {name:"neeraj",
+                  Age: 30
+    }
+
+    // Never do this 
+    obj1.__proto__ = obj; // this how obj1 inherits from object 
+ 
+    </script>
+</body>
+</html>

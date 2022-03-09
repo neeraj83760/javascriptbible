@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Debouncing is must if u want to improve the performance of the webpage  -->
+
+    <!-- Interview question : develop a search bar justlike the same showing in the
+         flipkart website so it auto suggest u a lots of things according to the search query 
+         you type in so
+
+         If we type in : laptop what happens is it makes the API call and get the search results
+         and feeds to the auto suggested dropdown list ... so if u typein more like : laptop lenovo
+         then more API calls are made and the results are fetched from the network but the important
+         thing to notice is : it does not make the API call for each and every keystroke event
+
+         suppose we want to search for : schoolbags in the flipkart search window it just made
+         two API calls (may vary sometimes )u can check the same in flipkart website 
+         
+         
+    
+    -->
+   <!--  The below method "getData" will get the data from the server  -->
+    <!-- <input type="/text" onkeyup="getData()"/> -->
+
+        <input type="/text" onkeyup="betterFunction()">
+
+
+    <script>
+    //  let count=0; // this will check how manytimes our API will called while typing in the
+    //  // textbox 
+    //     const getData = ()=>{
+
+    //         // calls an API and get the data 
+
+    //         console.log("fetching the DATA");
+    //     }
+
+        // so now what is happeing on each key stroke  theApi call in made , so we need to 
+        // make the API call only once the one word is complete 
+
+        // Also we want to make the API call when the user paused which typing in the search bar
+        // Means when the time diffrence between two key presses is greater than 300ms , then 
+        // olny call the getData method from the API 
+
+        // this function will take a function and a delay as an argument 
+
+        // so the doSomeMagic is nothing but a debounce method  
+
+        const betterFunction = doSomeMagic(getData, 300);
+
+        const doSomeMagic = (fn, delay)=>{
+            let = timer; 
+            return function(){
+
+                // this and args is used to check the enviounment and the lexical scope where this
+                //method is running is correct or not...and the same getdata method is called
+                // with the same arguments if it had. 
+            let context= this,
+            args = arguments;
+        clearTimeout(timer);      
+        let timer = setTimeout(() => {
+
+                fn.apply(context, args);
+                
+            }, delay);
+
+            }
+        }   
+// betterfunction will be called everytime the key stroke event occur in the textbox 
+// and it will return us a copy of the above function which will start the timer of a 
+// delay of 300ms and will call the getdata method if we don't clear the Interval or 
+// we don't clear the timeout bfore this 300ms just passed 
+        // const betterFunction = doSomeMagic(getData);
+
+
+        // suppose u are scrolling a webpage or resizeing the window u no need to make an API call 
+        //after every ms this will freeze your browser ......because of so many calls even a bit 
+        // of scrolling a webpage 
+    </script>
+</body>
+</html>

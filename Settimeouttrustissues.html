@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // Javescript is a syncronous single threaded language 
+         // ******************** settimeout callbacl function execution cycle *********
+        // settimeout callback fucntion >> register a callback in the web API enviourment 
+        // >> once the timer expire callback fnction moves in the callback queue >> 
+        // then it gets a chance for the execution once eventloop finds the callstack is
+        // empty 
+
+        console.log("Start");
+        setTimeout(function cb(){
+            console.log("Callback"); 
+        }, 5000);
+        
+        // once the start will print assume that there is 1million lines of code is wrtiiten
+        // here after the settimeout method than the callstack will not be empty
+        // till the million lines of code execute ..... eventloop will wait and once the
+        // exectution ends then it will pull the settimeout callbak method  from the callback 
+        //queue and push in the callstack for execution ......so settimeout has a trust issues
+        // becuase sometimes it don't execute as per the timer attachted to it.  
+        console.log("End")
+    </script>
+    <!--  -->
+</body>
+</html>

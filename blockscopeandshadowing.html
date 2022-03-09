@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        {
+            //block is used for combining multiple statements 
+            //compound statment ... 
+        }
+
+        var a=12; // same named variable outside the block is called shadowing 
+        {
+
+            var a= 10; // this variable shadows the outside variable 
+            let b= 20;
+            const c = 30; 
+            console.log(a);//this will print 10 not 100 
+        }
+
+        console.log(a);// what u will get here ...think:) .....u will get 10 ..because 
+        // it shawdowed the ouside value and also modified the outside variable value 
+        // because both are pointing to same memory location ... u can also check the same in 
+        // debugger tool how "a" modifes the value 100 to 10.....but thats not the case in let keyword
+
+
+         // let it will keep the outside variable under "script" memory location and the
+         // variable inside a block will stay in the block scope ......please check it in the
+         // debugger tool for better understanding 
+
+
+
+
+        // vvvvvvvvvvvIMP key point : we have three types of scope : block, script, global 
+
+        function ab(){
+
+        // even in a function scope, shadowing behaves in the same way 
+        }
+
+        // in chrome dev debugger tool u will find b and c have a block scope 
+        // in a seprate memory space b and c are hoisted and memory assigned 
+        // to them ....in the begnning it was assigned to undefined 
+
+        // a is hoisted in a global scope and undefined assigned to it in the begnning 
+
+        // let and const are block scoped because they are not accesible outside 
+        // the block ....unlike var
+
+
+        // what is illegal shadowing 
+
+        let p= 12;
+
+        {
+
+            var p= 10; // this is illegal shadowing .. but vice-versa it legal shadowing 
+        }
+
+        // If a variable is shadowing something it should not cross the boundary of it's scope
+        // in a particualr scope the let cannot be redecalred 
+        // var is a function scoped below code will not throw any error 
+
+        let b=8;
+        function abc()
+        {
+
+            var a= 20; // now this will not throw any error .... and its not interfaring outside b
+            // const will behave similar like this 
+            
+            // block scope also follow lexical scope 
+        }
+
+
+        //****************************************************************************
+        let s= 13;
+
+        {
+            let s = 14; // it;s a legal shawdowing 
+        }
+
+        // arrow function and normal function have similar kind of scope no diffrence 
+    </script>
+</body>
+</html>

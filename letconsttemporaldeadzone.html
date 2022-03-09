@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // let and const declarations are hoisted under the script memory and it;s been 
+        //in the temporal dead zone for the time being but they are
+        // hoisted very diffrently as compare to var decalration 
+    
+        console.log(b); // b = undefined ... means memory is already been allocated to b because
+        // b is hoisted ...also it will be attached to a global object 
+
+        console.log(a); // a = undefined ...it's also hoisted and assigned some meomry under the script
+        // section or scope .......but it will not print undefined it will give u an error
+        // "can't access a before initaiization " ...but but but but .. it will not be 
+        // attached with global object .... it will be kept under script section which 
+        // is totally a diffrent meomry space than global 
+        
+        // Temporal dead zone : it;s a time since when this let varible is hoisted and till 
+        // it initialize some value .... the time betweem than is called temporal dead zone
+
+        // to avoid temporal dead zone you need to intialzie and declare the variables 
+        //on the top to shrink the temporal dead zone window  
+
+        let a = 10; // once the code reaches to this line the temporal dead zone will end here
+        var b = 100;
+
+        // window.b in browser console will give you 100 because it's attached to global object
+
+        // diff between : syntax error , type error, refrence error
+
+            // type err example :
+
+            const c = 100;
+
+            // if we write ......const c; this will give syntax error because const var should be
+            // decalred in the same line where it's declared 
+
+            c =1000; // this will throw an err "typeerror : assigment to const vsriable" 
+            // type error because c is const type variable 
+
+            // refrence error : 
+
+    </script>
+</body>
+</html>

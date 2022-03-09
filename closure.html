@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+   
+
+   // Closures are used for data hiding 
+//    function x(){
+
+//        let a= 12;
+
+//        function y()
+//        {
+//            console.log(a); 
+//        }
+
+//        return y;  
+//    }
+
+//    let c = x();
+//    console.log(c()); 
+
+//********************************************************************************
+
+function x(){
+
+       let a= 12;
+
+       function y()
+       {
+           console.log(a); 
+       }
+       a = 13; // lexical scope of the function always remember of refrence of the
+               // variable in the outer scope not the value     
+       return y;  
+   }
+
+   let c = x();
+   console.log(c()); 
+
+
+
+</script>
+<body>
+    
+</body>
+</html>

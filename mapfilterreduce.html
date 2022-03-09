@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- map filter and reduce are higher order functions -->
+    <!-- Map function is used to trasnform an array  -->
+
+    <!-- transformation means : double the array elements -->
+    <!-- Example :  -->
+    <script>
+        const arr = [5, 6,9,11];
+        // double - [10, 12, 18, 22] ;
+        // triple - [15, 18, 21, 33];
+        // binary -[ "101", "110", "1001", "1011"]
+        
+        function double(x){
+
+            return x*2; 
+        }
+
+        function binary(x){
+         
+            return x.toString(2); 
+
+        }
+
+        // const x = arr.map(binary) => x.toString(2); 
+        // const y = binary(x) => x.toString(2);
+
+        const output = arr.map(double);
+        const output1 = arr.map(binary); 
+        
+        console.log(output1); 
+
+        // Filter function is used to filter the values inside the Array
+
+        // const arr = [5, 6,9,11];
+
+        // Suppose you want to filter the elements in the array which is odd values inside it.
+
+      function isODD(x){
+
+          return x % 2; 
+      }
+
+      function isEven(x){
+
+      return x % 2 === 0;  
+     }
+// const greaterthan = arr.filter((x) => x< 3); 
+      const output2 = arr.filter(isODD);    
+      const output3 = arr.filter(isEven);
+
+      console.log(output2);
+      console.log(output3); 
+ 
+
+// Reduce method don't reduce anything as per it's name 
+// It's used when you given an array and you have to comeup to with a single value ex: 
+
+// find the sum of all elements in an array , or find min and max element in the array 
+
+function findSum(arr){
+
+    let sum = 0;
+    for(let i=0; i< arr.length; i++)
+    {
+
+        sum = sum + arr[i]; 
+    } 
+
+    return sum; 
+}
+
+console.log(findSum(arr)); 
+
+const output4 = arr.reduce(function(accumulator, current){
+// this function iterates over each element of the array , and the
+// first parameter works as sum variable in the above function ,
+// and the current variable is repersenting the current values of the array 
+// so current varible is basically arr[i] of the findSum function 
+
+accumulator = accumulator + current; 
+
+return accumulator; 
+
+// so the second parameter for the reduce function is the inital value of the accumulator
+// which is like sum=0 which we have mentioned in above function 
+  
+   
+}, 0) 
+
+
+function findMax(arr){
+
+let max = 0;
+for(let i=0; i< arr.length; i++)
+{
+    if(arr[i] > max )
+     max = arr[i]; 
+} 
+
+return max; 
+}
+
+console.log(findMax(arr)); 
+
+
+
+
+const users = [
+
+{firstName:"Neeraj", lastname:"Ghil", Age:21},
+{firstName:"Ajay", lastname:"Rawat", Age:24},
+{firstName:"Sonu", lastname:"jaiswal", Age:20},
+{firstName:"Jay", lastname:"soni", Age:30},
+{firstName:"Raju", lastname:"chacha", Age:21}
+
+];
+
+// suppose the above shared is comming from an API
+
+// Suppose we need fullname of all these users like ..["Neeraj ghil", "Ajay Rawat"......]
+
+// what exact function do we use in this case: we use map function over here
+
+// const output5 = users.map((x)=> x.firstName +" "+ x.lastname);
+
+// suppose we need to check how many people have age 26 in it 
+
+// const output6 = users.filter((x)=> x.Age === 20)
+
+// console.log(output6);
+
+//const acc = {21 : 2 , 24: 1, 20:1, 30:1 } // number of people of age 21, 24 and 30 .... acc 
+// is an object 
+
+const output7 = users.reduce(function(accumulator, current){
+
+    if(accumulator[current.Age]){
+
+       accumulator[current.Age] = ++[current.Age]; 
+    }
+
+    else{
+
+        accumulator[current.Age] = 1; 
+    }
+
+    return accumulator; 
+},{}); 
+
+console.log(output7); 
+
+// find out the firstname of the people whose age is less than 30 
+// power of map filter and reduce is that we can also chain these methods as per our
+// requirement
+
+const output8 = users.filter((x) => x.age < 30).map((x)=> x.firstName); 
+
+console.log(output8); 
+
+
+// Important interview question : How you will write a polyfill for map filter and reduce 
+// function
+
+
+
+    </script>
+</body>
+</html>

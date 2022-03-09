@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- scenario 
+        execution should be in below mentioned order 
+
+        1. Register
+        2. send-welcome email
+        3. login
+        4. Get user Data
+        5. Dispaly user Data
+    
+    -->
+    <script>
+
+         // below waitforseconds is the code to simulate the delay :
+
+//    function waitforseconds(){
+
+// let ms = 3000 + new Date().getTime();
+//     while(new Date() < ms){
+   
+
+//     }
+
+//     setTimeout(()=>{
+     
+//         console.log('login end'); 
+
+//     }, 1000);
+
+
+
+//    function register(){ // it's a kind of network call which is a time taking process 
+//    // we dont know how much time thise request will it take , it depends on 
+//    // internet speed and other facetors ... so this will block the other lines of code mentioned
+//    // below 
+
+  
+//     // waitforseconds(); 
+
+//     setTimeout(() => {
+
+//         console.log("Register End"); 
+        
+//     }, 1000);
+    
+//    }
+
+
+//    function sendEmail(){
+//     // waitforseconds(); 
+
+//     setTimeout(() => {
+//         console.log("Weclome End"); 
+
+//     }, 3000);
+
+//    }
+
+//    function login(){
+
+//     // waitforseconds(); 
+    
+//     setTimeout(() => {
+
+//         console.log("login End"); 
+
+        
+//     }, 1000);
+
+//    }
+
+
+//    function getUserData(){
+//     // waitforseconds(); 
+//     setTimeout(() => {
+
+//         console.log("Get unser data"); 
+        
+//     }, 1000);
+
+   
+
+//    }
+
+//    function displayUserData(){
+
+
+//     setTimeout(() => {
+
+//         console.log("Display user data"); 
+//     }, 3000);
+  
+
+//    }
+
+//    // but the above delay will block the below mentioned code ...means blocking the main thread
+//    console.log('Other application work!!!');
+
+// the below mentioned calls is used with settimeout function
+//    register();
+//    sendEmail();
+//    login();
+//    getUserData();
+//    displayUserData();
+
+
+
+
+function register(callback){ 
+    setTimeout(() => {
+
+        console.log("Register End"); 
+        callback();
+    }, 1000);
+    
+   }
+
+
+   function sendEmail(callback){
+    // waitforseconds(); 
+
+    setTimeout(() => {
+        console.log("Weclome End"); 
+        callback();    
+    }, 3000);
+
+   }
+
+   function login(callback){
+
+    // waitforseconds(); 
+    
+    setTimeout(() => {
+
+        console.log("login End"); 
+        callback(); 
+        
+    }, 1000);
+
+   }
+
+
+   function getUserData(callback){
+    // waitforseconds(); 
+    setTimeout(() => {
+
+        console.log("Get unser data"); 
+        callback();
+    }, 1000);
+
+   
+
+   }
+
+   function displayUserData(callback){
+
+
+    setTimeout(() => {
+
+        console.log("Display user data");
+        callback();  
+    }, 3000);
+  
+
+   }
+
+   // but the above delay will block the below mentioned code ...means blocking the main thread
+   console.log('Other application work!!!');
+ 
+   // below nested functions, if we insert parameters then the below mentioned functions
+   // nesting will bcome more complex and more redalble 
+   // using promises we can remove the nested structure fnction mentioned below 
+   
+   //will less redable and creates call back hell   
+   register(function(){
+       
+     sendEmail(function(){
+     
+       login(function(){
+
+          getUserData(function(){
+          
+            displayUserData();
+
+                          });
+      
+                     });
+  
+                });
+   
+     });
+  
+
+
+
+// promise is a inbuilt javascript object .....whenver we run async code that code runs in the
+// background and when that code ends after running, then we need to do some task 
+// resolve and reject are two functions ....whenever we use promises it has some states , like
+// pending state , resolve state , reject state ........ if we get any error in the netowrk request
+// mentioned in the settimout method then we'll return reject() 
+
+
+
+     function register(){
+         return new Promise((resolve, reject) =>{
+
+            setTimeout(() => {
+
+            console.log("Register End"); 
+            resolve();
+            }, 1000);
+
+         }) 
+    
+    
+   }
+
+
+   function sendEmail(){
+    // waitforseconds(); 
+    return new Promise((resolve, reject)=>{
+
+        setTimeout(() => {
+        console.log("Weclome End"); 
+        resolve();    
+        }, 3000);
+
+    })
+  
+
+   }
+
+   function login(){
+
+    // waitforseconds(); 
+    return new Promise((resolve, reject)=>{
+
+    setTimeout(() => {
+
+        console.log("login End"); 
+        resolve(); 
+        
+    }, 1000);
+
+})
+
+   }
+
+
+   function getUserData(){
+
+    return new Promise((resolve, reject)=>{
+    // waitforseconds(); 
+    setTimeout(() => {
+
+        console.log("Get unser data"); 
+        callback();
+    }, 1000);
+
+})
+
+   }
+
+   function displayUserData(){
+
+    return new Promise((resolve, reject)=>{
+    setTimeout(() => {
+
+        console.log("Display user data");
+        callback();  
+    }, 3000);
+  
+    })
+
+   }
+
+   // but the above delay will block the below mentioned code ...means blocking the main thread
+   console.log('Other application work!!!');
+
+   // then usually takes a anyonomous function as an argument 
+   // below stamemt means first register then call sendEmail 
+ 
+   register()
+   .then(sendEmail)
+   .then(login)
+   .then(getUserData)
+   .then(displayUserData);
+  
+
+
+
+    </script>
+</body>
+</html>

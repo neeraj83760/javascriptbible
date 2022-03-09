@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+// lexical(in herrachy) enviournment is : local memory + along with it's lexical enviournment of it's parent 
+
+// along with the memory space in global exceution context u also get some memory for keeping the 
+//refrence to the lexical enviournment of it's parent 
+// scope chain is : finding the value (example : variable declaration) one level up in the
+// herrachy and keep on searching it till it finds the value 
+        function a(){
+
+        console.log(b); // javascript variable will try to find out the variable 
+        // inside the local scope first , then it will check it one level up outside the local scope
+        // and so on an so forth  
+        }
+
+        var b =10; 
+    </script>
+    
+</body>
+</html>

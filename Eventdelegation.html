@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- how to event bubbleup in the herrachy in the DOM Tree event delegtion is based on 
+    event bubbling so that's why the event bubbling exist event propogation exist 
+    -->
+
+    <!-- in our webpage we need event handlers to handle web events on the page but as our 
+         application grows the event handlers also grows which sometimes very difficult to 
+         manage those handlers it will also impacts our webpage performance so then event delegation
+         comes to rescue 
+    -->
+    <!-- Event delegation says that : Instead of attaching event handlers on the individual
+        
+        child html elements , we will directly attach the event handler to parent of
+        all the child html elements , so suppose someone click on the any of the child element we
+        bubble out that event to it's parent and then parent will handle that event  ....
+
+        it will save our time by not attaching the event handler to each and every child element
+        and it will also improve performance of the webpage     
+
+    -->
+    <!-- <div>
+        <ul id="category">
+            <li id="laptop">laptops</li>
+            <li id="cameras">cameras</li>
+            <li id=" shoes">shoes</li>
+        </ul>
+    </div> -->
+
+    <!-- Suppose we have a lots of input boxes in the html form tag and if any of the inputbox
+     has an attribut of "data-uppercase", then any element inside the div which has the 
+     "data-uppercase" attribute should follow a functionality. we will filter out those event
+    
+    -->
+    <!-- suppose we want to add a feature to making my name capital means we need the character
+         should comeup in uppercase ... suppose we want to acheive that functionality ..
+         then at first we check which element have "data-uppercase" arrtibute   
+    -->
+
+
+    <!-- we can also create our ownset of data attribute  -->
+
+    <div id="form">
+        <input type="text" id="name" data-uppercase>
+        <input type="text" id="pan">
+        <input type="text" id="mobilenumber">
+    
+    </div>
+    
+    <script>
+        // document.querySelector("#category").addEventListener("click",(e)=>{
+
+        //     console.log(e.target.id);
+
+        //     if(e.target.tagName == "LI") // route to a sepecificpage if target element is a "li" element;
+        //     window.location.href = "/" + e.target.id;  
+        // })
+
+      document.querySelector("#form").addEventListener('keyup',(e)=>{
+
+       console.log(e);
+
+       // filtering out those events which are only specific targeting that data-uppercase elements
+       if(e.target.dataset.uppercase != undefined){
+
+        e.target.value = e.target.value.toUpperCase(); 
+       }
+
+      })
+      // so we have made the above function once but we can reuse this functionality to any number
+      // of inputboxes we want to 
+
+      // we saves lots of memory in event delegation because we attach a single eventhandler
+      // to the parent component and when the event occur in any of the child compnents we just
+      // need to bubble up the event so that the parent to whom we have attached the event handler
+      // can handle the event on behalf of child comopnent 
+
+      // Using Event delegation we also write less code because in this we only attach the
+      // event handler to the parent element not the child element  
+
+      // third benefit of event delegation is DOM manupulation :
+
+      //  Limitations of Event delegation :
+
+      // All the events don't bubbled up in the herrachy some events like blurr, focus , resizing of the window
+      // events like : click, keyup etc bubbled up in the herrachy 
+      // please don't use " stoppropogation" method if u want event to bubbled up 
+    </script>
+</body>
+</html>

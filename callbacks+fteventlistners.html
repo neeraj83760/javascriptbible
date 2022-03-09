@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="clickme">Click me</button>
+    <script>
+
+        // what is a callaback function in javascript 
+
+        // Answer :  functions are first calss citzens in javascript, because of 
+        // callbacks we can do async things in javascript 
+        
+        // function x(y){
+        //     console.log("x");
+        //     y(); 
+        // }
+
+        // x(function y(){
+        //     console.log("y");
+        //     // so y() is the callback function ...not it's upto x() function when 
+        //     // it wants to call the y function some later in code 
+        //     // settimeout takes a callback function 
+        // })
+
+        // setTimeout(function(){
+
+        //         console.log("timer");
+        // },5000)
+
+        // javascript is syncronus single threaded language
+        //blocking the main thread
+        // power of callbacks
+        // deep about event listeners 
+        // closures demo with event listners 
+        // scopes demo with event listeners
+        // garbage collection and removeeventlistners
+
+        function attachEventListners(){
+         
+            let count = 0; 
+        document.getElementById("clickme").addEventListener("click",function xyz(){
+         
+            console.log("Button clicked", count++); 
+
+        })
+
+        }
+
+        attachEventListners();
+
+    </script>
+
+    <!-- Famous interview question : why do we need to remove the eventlistners by
+       even in a large codebase the lot of people they remove eventlistners 
+
+       Reason : Event listners are heavy ..because it takesmemory 
+       so whenever you attach a eventlistner it forms a closure ..so even 
+       when the callstack is empty still this program is not freeing up memory 
+       and count =0 is still there in eventlistners tab in developers tool because
+       u never know in future when someone on the webpage click on the button so
+       we need this closure to count this.
+       
+       freeing up the memory held by eventlisner and it's closures so that it will be garbage
+       collected  
+    -->
+
+   
+</body>
+</html>

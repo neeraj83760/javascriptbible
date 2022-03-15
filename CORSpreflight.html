@@ -27,7 +27,14 @@
  to partly circumvent the same origin policy which is designed to prevent diffrent websites from interfering with each other. 
 
 
-  Same origin policy :   
+  Same origin policy : bing.com want to acess resources of google.com it will not be able to access it because of same origin policy ...login with facebook or login with 
+   google mentioned under the login page of any thirdparty website is possible only because of CORS 
+
+
+origin A (www.abc.com) __________________ origin B(xyz.com)  if origin A want to useresources of origin B how to CORS works in this case .. Origin A first send the
+PRE FLIGHT REQUEST by saying that we need your resources ...then origin B provide an option to A ki bhaiya to jab bhi merese se request karega to ye cheez(Access
+-Control-Allow-Origin: www.abc.com) apne header ke andar rakhna ....means if u want to bypass the same origin policy using these kind of features in this CORS helps
+
 
     -->
 </body>

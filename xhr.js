@@ -1,4 +1,11 @@
 
+// Jab bhi hum koi website pe refresh karte hai to poora page regresh hota hai bhale hi humnein ek chote se component ko update kiya ho means jitni 
+// baar refresh hoga page utni baar poore webpage ke components refresh honge yaani on each page refresh we need to make that many network calls to the 
+//server for each page components 
+
+// Here comes ajax comes to rescue ... means if we use Ajax call to the server then to poora page nahi refresh hoga sirf wahi component refresh hoga 
+//jo update hua hai .. so ajax call karne ke liye we use many libraries and Axios is one of them, or koi vanilla javascript bhi use karta hai  
+
 // Creating our mini Axios function for the Ajax call 
 
 // method parameter might be get request or post request 

@@ -22,7 +22,9 @@
 
 //        return y;  
 //    }
-
+// jaise hi aap function x se return karte ho to wo x function callstack se remove ho jaata hai and below line of code me wo returned value c me assing
+// kar deta hai ... aur x function poora vainshed ho jaata hai system se but y function apne lexical scope ke variables ko humesha yaad rakhta hai 
+// so that means hum c se still variable a ko access kar sakte hai 
 //    let c = x();
 //    console.log(c()); 
 
@@ -37,7 +39,7 @@ function x(){
            console.log(a); 
        }
        a = 13; // lexical scope of the function always remember of refrence of the
-               // variable in the outer scope not the value     
+               // variable in the outer scope not the value... lexical scope sirf refrence ko yaad rakhta hai naaki value ko      
        return y;  
    }
 
